@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./src/assets/favicon.ico" type="image/x-icon">
+    <!-- Title and Description -->
+    <title>BSale-Ecommerce</title>
+    <meta name="description" content="Bsale-Ecommerce es una tienda virtual enfocada en varios tipos de bebidas y snacks. Esta tienda se ha desarrollado en base a un desafío realizado por la empresa BSale con el fin de obtener un puesto para un trabajo.">
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./src/styles/main.css">
+    <link rel="stylesheet" href="./src/styles/responsive.css"  media="(min-width: 960px)">
+    <!-- SCRIPT FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/b07fe9929b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <!-- <a href="#" class="header__logo" id="headerLogo"> -->
+        <img src="./src/assets/LogoBSale.png" alt="Logo de la tienda virtual" class="header__logo" id="headerLogo">
+        <!-- </a> -->
+        <button class="primary-button button-cart__header" id="buttonShoppingCartOpen">
+            <p class="button-cart__count" id="buttonCartCount">0</p>
+            <i class="fa-solid fa-cart-plus"></i>
+        </button>
+    </header>
+    <!-- MODALS INTERACTIVOS PARA LA COMPRA -->
+    <div class="modal__product-added" id="modalProductAdded">
+        <p>Product successfully added</p>
+        <button id="btnCloseModalProductAdded">x</button>
+    </div>
+    <div class="modal__product-added" id="modalProductRemoved">
+        <p>Product successfully removed</p>
+        <button id="btnCloseModalProductRemoved">x</button>
+    </div>
+    <div class="modal__product-added" id="modalSuccesfullPurchase">
+        <p>Successful purchase</p>
+        <button id="btnCloseModalSuccesfullPurchase">x</button>
+    </div>
+    <!-- MODAL PARA BÚSQUEDA NO ENCONTRADA -->
+    <div class="modal__product-added" id="modalProductNotFount">
+        <p>Product not found</p>
+        <button id="btnCloseModalProductNotFount">x</button>
+    </div>
+    <!-- CUERPO PRINCIPAL -->
+    <main class="main" id="main">
+        <section class="main-products">
+            <section class="products-filter">
+                <div class="filters__container">
+                    <div class="button-filter" id="buttonFilter" title="Button to filter products">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <div class="modal__show-filters" id="modalShowFilters">
+                        <div class="show-categories__container" id="showCategoriesModal">
+                            <div class="filter__item filterCategory tooltip" id="filterCategory">
+                                <i class="fa-solid fa-tag"></i>
+                                <p>Category</p>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="show-categories displayedCategories" id="displayedCategories">
+                            </div>
+                        </div>
+                        <div class="filter__item filterAllProducts">
+                            <i class="fa-solid fa-border-all"></i>
+                            <p>All products</p>
+                        </div>
+                        <div class="filter__item filterDiscount">
+                            <i class="fa-solid fa-percent"></i>
+                            <p>With discount</p>
+                        </div>
+                        <div class="filter__item filterNameIncreasing">
+                            <i class="fa-solid fa-arrow-up-z-a"></i>
+                            <p>Increasing name</p>
+                        </div>
+                        <div class="filter__item filterNameDecreasing">
+                            <i class="fa-solid fa-arrow-down-z-a"></i>
+                            <p>Decreasing name</p>
+                        </div>
+                        <div class="filter__item filterHigherPrices">
+                            <i class="fa-solid fa-arrow-up-9-1"></i>
+                            <p>Higher prices</p>
+                        </div>
+                        <div class="filter__item filterLowerPrices">
+                            <i class="fa-solid fa-arrow-down-9-1"></i>
+                            <p>Lower prices</p>
+                        </div>
+                        <div id="showBetweenPricesModal">
+                            <div class="filter__item tooltip filterBetweenPrices">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                                <p>Between prices</p>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <form class="show-between-prices displayedFormPrices">
+                                <div class="form__between-prices">
+                                    <input type="number" min="0" class="inputMinValue" required>
+                                    <p> - </p>
+                                    <input type="number" min="0" class="inputMaxValue" required>
+                                </div>
+                                <button class="primary-button button__filter-between-prices btnFilterBetweenPrices">
+                                    Filter
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <form class="search">
+                    <input type="text" class="search__input" placeholder="Type your text" id="inputSearch" autocomplete="off">
+                    <button class="search__button" title="Button to search for products" id="btnSearch">
+                        <i class="fa-solid fa-magnifying-glass search__icon"></i>
+                    </button>
+                </form>
+            </section>
+            <section class="main-products__container">
+                <section class="products-filter__desktop">
+                    <h2>Filters</h2>
+                    <div class="show-categories__hover" id="showCategoriesModalDesktop">
+                        <div class="filter__item filterCategory tooltip">
+                            <i class="fa-solid fa-tag"></i>
+                            <p>Category</p>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="show-categories displayedCategories">
+                        </div>
+                    </div>
+                    <div class="filter__item filterAllProducts">
+                        <i class="fa-solid fa-border-all"></i>
+                        <p>All products</p>
+                    </div>
+                    <div class="filter__item filterDiscount">
+                        <i class="fa-solid fa-percent"></i>
+                        <p>With discount</p>
+                    </div>
+                    <div class="filter__item filterNameIncreasing">
+                        <i class="fa-solid fa-arrow-up-z-a"></i>
+                        <p>Increasing name</p>
+                    </div>
+                    <div class="filter__item filterNameDecreasing">
+                        <i class="fa-solid fa-arrow-down-z-a"></i>
+                        <p>Decreasing name</p>
+                    </div>
+                    <div class="filter__item filterHigherPrices">
+                        <i class="fa-solid fa-arrow-up-9-1"></i>
+                        <p>Higher prices</p>
+                    </div>
+                    <div class="filter__item filterLowerPrices">
+                        <i class="fa-solid fa-arrow-down-9-1"></i>
+                        <p>Lower prices</p>
+                    </div>
+                    <div id="showBetweenPricesModal">
+                        <div class="filter__item tooltip filterBetweenPrices">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            <p>Between prices</p>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <form class="show-between-prices displayedFormPrices">
+                            <div class="form__between-prices">
+                                <input type="number" min="0" class="inputMinValue" required>
+                                <p> - </p>
+                                <input type="number" min="0" class="inputMaxValue" required>
+                            </div>
+                            <button class="primary-button button__filter-between-prices btnFilterBetweenPrices">
+                                Filter
+                            </button>
+                        </form>
+                    </div>
+                </section>
+                <section class="product-cards__container" id="productCardsContainer">
+            </section>
+            </section>
+            <div class="product-cards__pagination">
+                <button title="Button Prev Page" class="primary-button button__pagination" id="productCardsPaginationPrev"><i class="fa-solid fa-chevron-left"></i></button>
+                <p class="number-page" id="numberPage">1</p>
+                <button title="Button Next Page" class="primary-button button__pagination" id="productCardsPaginationNext"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </section>
+        <!-- MODAL DE LOS DETALLES DEL PRODUCTO -->
+        <section class="modal-container" id="productDetailModalContainer">
+            <section class="product-detail__container" id="productDetail">
+                <button class="button-close" id="buttonProductDetailClose">
+                    <span>X</span>
+                </button>
+                <div class="product-detail__images">
+                    <img src="" alt="Main product presentation" id="mainImg" class="main-img">
+                    <div class="product-detail__small-images">
+                        <img src="" alt="Another product presentation" class="small-img">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/NYCS-bull-trans-2.svg/1200px-NYCS-bull-trans-2.svg.png" alt="Another product presentation" class="small-img">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/NYCS-bull-trans-3.svg/1200px-NYCS-bull-trans-3.svg.png" alt="Another product presentation" class="small-img">
+                    </div>
+                </div>
+                <div class="product-detail__free-shipping">
+                    <p>Free Shipping</p>
+                </div>
+                <div class="product-detail__information">
+                    <h3 class="information__title" id="informationTitle"></h3>
+                    <p class="information__description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero officiis consequatur, soluta voluptates odit et fuga consectetur qui alias impedit nulla officia modi repudiandae, adipisci obcaecati molestias! Facere, voluptatem obcaecati.
+                    </p>
+                    <div class="information__price__container">
+                        <p class="information__price" id="informationPrice"></p>
+                        <p class="information__price-discount" id="informationPriceDiscount"></p>
+                    </div>
+                </div>
+                <div class="product-detail__users-pinned">
+                    <div class="users-pinned__images">
+                        <img src="./src/assets/user1.jpg" alt="Usuario fijado">
+                        <img src="./src/assets/user2.jpg" alt="Usuario fijado">
+                        <img src="./src/assets/user3.jpg" alt="Usuario fijado">
+                    </div>
+                    <p class="users-pinned__text">
+                        8200+ users pinned this
+                    </p>
+                </div>
+            </section>
+        </section>
+        <!-- MODAL DE CARRITO DE COMPRAS -->
+        <section class="modal-container" id="shoppingCartModalContainer">
+            <section class="shopping-cart__modal"  id="shoppingCartModal">
+                <button class="button-close" id="buttonShoppingCartClose">
+                    <span>X</span>
+                </button>
+                <h3 class="shopping-cart__title">
+                    Shopping Cart
+                </h3>
+                <section class="shopping-cart__items" id="shoppingCartItems">
+                </section>
+                <div class="shopping-cart__purchase">
+                    <div class="shopping-cart__purchase__total-price">
+                        <p>Total</p>
+                        <p id="shoppingCartTotalPrice">$ 0</p>
+                    </div>
+                    <button class="primary-button button-purchase" id="btnPurchase" disabled="true">
+                        Purchase
+                    </button>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- SCRIPT DE TIPO MODULE (ES6), PARA USAR EXPORT / IMPORT -->
+    <script src="./src/js/index.js" type="module"></script>
+</body>
+</html>

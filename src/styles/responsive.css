@@ -1,0 +1,7 @@
+.filters__container{
+    display: none;
+}
+
+.products-filter__desktop{
+    display: block;
+}
