@@ -3,11 +3,15 @@
 
 Este proyecto es un ecommerce de bebidas y snacks que se ha realizado en base a un desafío dispuesto por la empresa Bsale. Algunas funcionalidades de esta son:
 
+
 - Filtrar productos
 - Buscar productos
 - Ver información completa
 - Agregar producto al Carrito
 - Eliminar producto del Carrito
+
+## Deploy
+https://bsale-ecommerce-frontend.vercel.app/
 
 ## Screenshots
 
