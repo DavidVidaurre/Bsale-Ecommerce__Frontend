@@ -3,5 +3,5 @@
 }
 
 .products-filter__desktop{
-    display: block;
+    display: flex;
 }
